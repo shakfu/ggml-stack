@@ -1,0 +1,24 @@
+[project]
+name = "ggml-stack"
+version = "0.1.0"
+description = "Shared single-ggml build recipe for llama.cpp + whisper.cpp + stable-diffusion.cpp"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+ggml-stack = "ggml_stack.__main__:main"
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ggml_stack"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
