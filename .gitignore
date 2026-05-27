@@ -1,3 +1,5 @@
+.DS_Store
+
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -6,6 +8,9 @@ dist/
 wheels/
 *.egg-info
 .*_cache
+
+## ggml-stack
+thirdparty/
 
 # Virtual environments
 .venv

@@ -1,7 +1,10 @@
 [project]
 name = "ggml-stack"
-version = "0.1.0"
+version = "0.1.1"
 description = "Shared single-ggml build recipe for llama.cpp + whisper.cpp + stable-diffusion.cpp"
+authors = [
+    { name = "Shakeeb Alireza", email = "shakfu@users.noreply.github.com" }
+]
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
@@ -10,8 +13,10 @@ dependencies = []
 [project.scripts]
 ggml-stack = "ggml_stack.__main__:main"
 
-[project.optional-dependencies]
-test = ["pytest>=7"]
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
 
 [build-system]
 requires = ["hatchling"]

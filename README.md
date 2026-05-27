@@ -74,6 +74,32 @@ python -m ggml_stack build --with-server --openssl
 python -m ggml_stack info --root /tmp/work   # list staged archives
 ```
 
+## Version pins
+
+The three engines are pinned to git refs (tags or branch/commit names passed to
+`git clone --branch`). The default pins live as constants near the top of
+[`src/ggml_stack/builders.py`](src/ggml_stack/builders.py) (`LLAMACPP_VERSION` /
+`WHISPERCPP_VERSION` / `SDCPP_VERSION`) -- that file is the source of truth for
+the current values.
+
+A pin can be set three ways, in increasing precedence:
+
+1. **Default constant** -- the literal fallback in `builders.py`.
+2. **Environment variable** -- `LLAMACPP_VERSION` / `WHISPERCPP_VERSION` /
+   `SDCPP_VERSION`, read at import time.
+3. **`StackConfig.versions`** -- a `dict` keyed by `"llama"` / `"whisper"` /
+   `"sd"`, applied per-builder at `build_stack()` time. This is the per-consumer
+   override each project uses to keep its own pins.
+
+So `StackConfig.versions` > env var > default constant. Example:
+
+```python
+build_stack(StackConfig(versions={"llama": "b9400", "sd": "master-660-abc1234"}))
+```
+
+These pins are independent of the `ggml-stack` package version in
+`pyproject.toml`, which versions this package, not the engines it builds.
+
 ## Parameterization (what differs between the three consumers)
 
 | Knob | How | chimera | cyllama / inferna |
