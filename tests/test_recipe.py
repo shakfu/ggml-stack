@@ -1,7 +1,7 @@
 """Dry-run tests for the single-ggml recipe.
 
 These assert on the *generated* git/cmake command lines (via dry-run, no
-compilation), so they validate the load-bearing wiring -- build order, the
+compilation), so they validate the  wiring -- build order, the
 shared-ggml flags, GGML_MAX_NAME propagation, the SD ggml sync -- fast and on
 any machine without a toolchain.
 """

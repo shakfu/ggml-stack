@@ -8,7 +8,7 @@ inferna. The class shape is preserved:
 The pieces that differ between the three consumers are turned into constructor
 parameters rather than hard-coded (version pins, the llama target/lib set,
 LLAMA_BUILD_SERVER, LLAMA_OPENSSL, whether to share ggml). The single-ggml
-mechanism itself -- the load-bearing, drift-prone part -- is identical and lives
+mechanism itself -- the , drift-prone part -- is identical and lives
 here once.
 """
 

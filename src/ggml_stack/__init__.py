@@ -2,7 +2,7 @@
 whisper.cpp + stable-diffusion.cpp.
 
 Factored out of the (near-identical) builder code in the chimera / cyllama /
-inferna `manage.py` files so the load-bearing single-ggml mechanism lives in
+inferna `manage.py` files so the  single-ggml mechanism lives in
 one place. Consuming projects keep their own version pins, bindings, and wheel
 packaging; they call into the builders / `build_stack` here for the fetch +
 compile + stage of the three engines against one ggml.
